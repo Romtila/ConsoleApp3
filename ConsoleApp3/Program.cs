@@ -11,7 +11,7 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            var builder = new ContainerBuilder();
+            var builder = new ContainerBuilder(); 
 
             builder.RegisterType<UserService>();
 
@@ -28,8 +28,6 @@ namespace ConsoleApp3
             var videoService = container.Resolve<VideoService>();
             
             var commentService = container.Resolve<CommentService>();
-
-
 
             #region 
 
