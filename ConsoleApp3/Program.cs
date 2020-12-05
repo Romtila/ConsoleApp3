@@ -17,8 +17,6 @@ namespace ConsoleApp3
 
             builder.RegisterType<VideoService>();
 
-            builder.RegisterType<CommentService>();
-
             builder.RegisterGeneric(typeof(BaseRepository<>));
 
             var container = builder.Build();
@@ -26,8 +24,6 @@ namespace ConsoleApp3
             var userService = container.Resolve<UserService>();
 
             var videoService = container.Resolve<VideoService>();
-            
-            var commentService = container.Resolve<CommentService>();
 
             #region 
 
@@ -67,19 +63,6 @@ namespace ConsoleApp3
     public interface IHasId
     {
         ObjectId Id { get; set; }
-    }
-
-    public class CommentService
-    {
-        private readonly UserService _userService;
-
-        private readonly VideoService _videoService;
-
-        public CommentService(VideoService videoService, UserService userService)
-        {
-            _videoService = videoService;
-            _userService = userService;
-        }
     }
 }
 // создать класс userService, в который передаем модель UserView, а внутри добавить проверки, 
