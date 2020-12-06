@@ -28,6 +28,13 @@ namespace ConsoleApp3
             _baseRepository.Create(user);
         }
 
+        public void VerificationUsername(string username, string password)
+        {
+            if (_baseRepository.GetMany().Any(x => x.Username == username && x.Password == password))
+                return;
+            throw new Exception("Username is not or password is wrong");
+        }
+
         private static void ValidateUsername(string username)//проверка username
         {
             if (string.IsNullOrEmpty(username)) throw new Exception("Username is empty");
