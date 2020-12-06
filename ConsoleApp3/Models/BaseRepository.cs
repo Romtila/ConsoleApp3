@@ -22,6 +22,7 @@ namespace ConsoleApp3
         {
             collection.InsertOne(user);
         }
+
         public T Get(ObjectId id)
         {
             var cursor = collection.FindSync(x => x.Id == id);

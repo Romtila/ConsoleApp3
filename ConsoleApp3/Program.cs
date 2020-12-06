@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,7 +12,7 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            var builder = new ContainerBuilder(); 
+            var builder = new ContainerBuilder();
 
             builder.RegisterType<UserService>();
 
@@ -25,6 +26,24 @@ namespace ConsoleApp3
 
             var videoService = container.Resolve<VideoService>();
 
+            while (true)
+            {
+                Console.WriteLine("Введите username");
+
+                var username = Console.ReadLine();                
+
+                Console.WriteLine("Введите password");
+
+                var password = Console.ReadLine();
+
+                userService.VerificationUser(username, password);
+
+                Console.WriteLine("Введите название ролика");
+
+                var title = Console.ReadLine();
+
+
+            }
             #region 
 
             //var userService = new UserService();

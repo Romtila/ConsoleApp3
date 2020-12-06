@@ -31,6 +31,19 @@ namespace ConsoleApp3
 
             _videoRepository.Create(video);
         }
+
+        public void CreateVideo(string title, User user)
+        {
+            if (_userRepository.Get(user.Id) == null)
+                throw new Exception("Такого юзера несуществует");
+            var video = new Video()
+            {
+                OwnerId = user.Id,
+                Title = title,
+            };
+
+            _videoRepository.Create(video);
+        }
     }
 }
 

@@ -28,7 +28,7 @@ namespace ConsoleApp3
             _baseRepository.Create(user);
         }
 
-        public void VerificationUsername(string username, string password)
+        public void VerificationUser(string username, string password)
         {
             if (_baseRepository.GetMany().Any(x => x.Username == username && x.Password == password))
                 return;
