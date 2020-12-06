@@ -24,11 +24,6 @@ namespace ConsoleApp3
             var userService = container.Resolve<UserService>();
 
             var videoService = container.Resolve<VideoService>();
-<<<<<<< Updated upstream
-=======
-
-            var commentService = container.Resolve<CommentService>();
->>>>>>> Stashed changes
 
             #region 
 
@@ -58,6 +53,7 @@ namespace ConsoleApp3
 
             #endregion
         }
+
         public static string Selector(User user)
         {
             return user.Username;
@@ -69,11 +65,9 @@ namespace ConsoleApp3
         ObjectId Id { get; set; }
     }
 }
-// создать юзеров в базе
-// программа работает так: вводим в конль username и пароль, если username такой существует в бд и пароль его правильный, 
-//то нужно дать еще ввести строку, и создается видос с названием этой строки
-//
-//но если юзер вводит logout, то юезр выходит и снова нужно вводить логин и пароль
-//и попробовать все это в гит
-
+// создать класс userService, в который передаем модель UserView, а внутри добавить проверки, 
+// например чтобы длина логина была длиннее чегонить, пароль проверка, несколько полей добавить в документ User, типа мейл и др.
+// а потом UserrService создает мне User по UserView. 
+// и тоже самое VideoService аналогично с userService, в классе Video + должен быть Object ID "OwnerId", это Id того юзера, котоырй его создал  
+// Когад мы пытаемся создать видео, проверяем, что User (OwnerId в Video) реально существует такой User
 
