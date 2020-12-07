@@ -28,10 +28,15 @@ namespace ConsoleApp3
             _baseRepository.Create(user);
         }
 
-        public void VerificationUser(string username, string password)
+        public User VerificationUser(string username, string password) // в этом методе я бы сделал не void, а возвращал Userы
         {
+            var user = new User();
+
             if (_baseRepository.GetMany().Any(x => x.Username == username && x.Password == password))
-                return;
+            {
+                user = _baseRepository.GetMany().ElementAt(0);
+                return user;
+            }
             throw new Exception("Username is not or password is wrong");
         }
 

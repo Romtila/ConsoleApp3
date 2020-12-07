@@ -28,22 +28,45 @@ namespace ConsoleApp3
 
             while (true)
             {
+                if (Console.ReadLine() == "exit")
+                    goto linqexit;
+
+                linqauth:
+
+                User user;                
+
                 Console.WriteLine("Введите username");
 
-                var username = Console.ReadLine();                
+                var username = Console.ReadLine();
 
                 Console.WriteLine("Введите password");
 
                 var password = Console.ReadLine();
 
-                userService.VerificationUser(username, password);
+                user = userService.VerificationUser(username, password);
 
-                Console.WriteLine("Введите название ролика");
+                if (user == null)
+                    goto linqauth;
 
-                var title = Console.ReadLine();
+                linqcreatevideo:
+                
+                Console.WriteLine("Введите название ролика, которое создать");
 
+                var str = Console.ReadLine();
 
+                if (str == "logout")
+                    goto linqauth;
+                else if (str == "exit")
+                    goto linqexit;
+
+                var title = str;
+
+                videoService.CreateVideo(title, user);
+
+                goto linqcreatevideo;
             }
+
+            linqexit:;
             #region 
 
             //var userService = new UserService();
